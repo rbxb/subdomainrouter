@@ -35,6 +35,7 @@ func (r *router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func getServer(req *http.Request) string {
+	log.Println(req.Host)
 	host := strings.Split(req.URL.Host, ".")
 	subdomain := ""
 	if len(host) > 2 {
