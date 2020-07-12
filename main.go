@@ -28,8 +28,7 @@ func main() {
 
 func (r *router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	if server := getServer(req); server != "" {
-		//proxy(w, req, server)
-		w.Write([]byte(server))
+		proxy(w, req, server)
 	} else {
 		http.Error(w, "Not found.", 404)
 	}
