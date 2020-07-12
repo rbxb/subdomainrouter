@@ -1,8 +1,14 @@
 package main
 
 import (
+	"errors"
 	"flag"
+	"io/ioutil"
+	"log"
 	"net/http"
+	"net/http/httputil"
+	"net/url"
+	"strings"
 )
 
 var path string
@@ -21,10 +27,6 @@ func main() {
 }
 
 func (r *router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte("Hello world!"))
-}
-
-/*func (r *router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	if server := getServer(req); server != "" {
 		proxy(w, req, server)
 	} else {
@@ -70,4 +72,3 @@ func proxy(w http.ResponseWriter, req *http.Request, server string) {
 	}
 	proxy.ServeHTTP(w, req)
 }
-*/
